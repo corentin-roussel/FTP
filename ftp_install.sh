@@ -2,8 +2,8 @@
 
 
 #upgrade et update du systéme vierge install de proftpd et vérification de l'installation avec la commande de la version proftpd
-apt -y upgrade && apt -y update
-apt install -y proftpd* openssl
+apt -y update && apt -y upgrade
+apt -y install  proftpd*
 proftpd --version
 
 #commande pour restart proftpd avant d'enregistrer les changements effectués
