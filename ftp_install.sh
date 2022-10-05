@@ -6,7 +6,7 @@ apt -y update && apt -y upgrade
 apt install -y  proftpd-*
 
 #commande pour restart proftpd avant d'enregistrer les changements effectués
-systemctl restart proftpd
+systemctl start proftpd
 
 #commande qui nous permet de créer un dossier ssl pour pouvoir placer le certificat et la clé ssl
 mkdir /etc/proftpd/ssl
@@ -31,5 +31,5 @@ printf "secondbreakfast\nsecondbreakfast\nPeregrin-Took\n\n\n\n\no\n" | adduser 
 systemctl restart proftpd
 
 #création de la clé et du certificat ssl afin de pouvoir se connecter en tls/ssl
-printf "ER\nMiddleEarth\nTheShire\nHobbit\nFotR\nFrodoBaggins\n\n" | sudo openssl req -x509 -newkey rsa:2048 -keyout /etc/proftpd/ssl/proftpd.key.pem -out /etc/proftpd/ssl/proftpd.cert.pem -nodes -days 365
+printf "ER\nMiddleEarth\nTheShire\nHobbit\nFotR\nFrodoBaggins\n\n" | openssl req -x509 -newkey rsa:2048 -keyout /etc/proftpd/ssl/proftpd.key.pem -out /etc/proftpd/ssl/proftpd.cert.pem -nodes -days 365
 systemctl restart proftpd
