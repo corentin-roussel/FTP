@@ -2,11 +2,10 @@
 
 
 #upgrade et update du systéme vierge install de proftpd et vérification de l'installation avec la commande de la version proftpd
-apt -y update && apt -y upgrade
+apt -y update 
+apt -y upgrade
 apt install -y  proftpd-*
 
-#commande pour restart proftpd avant d'enregistrer les changements effectués
-systemctl start proftpd
 
 #commande qui nous permet de créer un dossier ssl pour pouvoir placer le certificat et la clé ssl
 mkdir /etc/proftpd/ssl
@@ -21,15 +20,14 @@ cp proftpd.conf /etc/proftpd/proftpd.conf
 cp modules.conf /etc/proftpd/modules.conf
 cp tls.conf /etc/proftpd/tls.conf
 
-systemctl restart proftpd
 #commande permettant de donner accés a l'utilisateur uniqument au serveur ftp
 echo "/bin/false" >> /etc/shells
 
 #commande qui crée des utilisateurs
 printf "kalimac\nkalimac\nMeriadoc-Brandybuck\n\n\n\n\no\n" | adduser --force-badname Merry --shell /bin/false
 printf "secondbreakfast\nsecondbreakfast\nPeregrin-Took\n\n\n\n\no\n" | adduser --force-badname Pippin --shell /bin/false
-systemctl restart proftpd
 
 #création de la clé et du certificat ssl afin de pouvoir se connecter en tls/ssl
 printf "ER\nMiddleEarth\nTheShire\nHobbit\nFotR\nFrodoBaggins\n\n" | openssl req -x509 -newkey rsa:2048 -keyout /etc/proftpd/ssl/proftpd.key.pem -out /etc/proftpd/ssl/proftpd.cert.pem -nodes -days 365
+#commande pour restart proftpd avant d'enregistrer les changements effectués
 systemctl restart proftpd
