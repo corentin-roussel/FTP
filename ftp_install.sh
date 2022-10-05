@@ -3,8 +3,7 @@
 
 #upgrade et update du systéme vierge install de proftpd et vérification de l'installation avec la commande de la version proftpd
 apt -y update && apt -y upgrade
-apt -y install  proftpd*
-proftpd --version
+apt install -y  proftpd-*
 
 #commande pour restart proftpd avant d'enregistrer les changements effectués
 systemctl restart proftpd
